@@ -1,10 +1,11 @@
 import { PrismaClient } from "@prisma/client";
+export const prismaClient = new PrismaClient();
+
 import { join } from "path";
 import { PORT } from "./utils/config";
 import { ViewRouter } from "./routes/views.routes";
+import { AuthRouter } from "./routes/auth.routes";
 import express from "express";
-
-export const prismaClient = new PrismaClient();
 
 async function main() {
   await prismaClient.$connect();
@@ -18,6 +19,7 @@ async function main() {
   app.set("views", join(__dirname, "views"));
 
   app.use("/", ViewRouter);
+  app.use("/auth", AuthRouter);
 
   app.listen(PORT);
 }
