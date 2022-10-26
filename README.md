@@ -10,5 +10,5 @@
 2. include your postgres connection string.
 3. include a PORT in .env
 4. open a terminal.
-   4.1. type `npm run dev` to start dev-mode.
-   4.2. type `npm start` to start.
+5. type `npm run dev` to start dev-mode.
+6. type `npm start` to start.
