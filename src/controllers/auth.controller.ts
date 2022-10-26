@@ -13,18 +13,18 @@ export async function checkLogin(req: Request, res: Response) {
     });
 
     if (!user) {
-      res.send("user not found");
+      res.render("error", { message: "User not found" });
       return;
     }
 
     if (!(await compare(password, user.password))) {
-      res.send("wrong password");
+      res.render("error", { message: "Invalid password" });
       return;
     }
 
     res.send(`${user.username} logged in -> take me to feed page`);
   } catch (err) {
-    res.send("error");
+    res.render("error", { message: "Something went wrong in the server" });
   }
 }
 
@@ -43,6 +43,6 @@ export async function checkSignup(req: Request, res: Response) {
 
     res.render("home", { username, email, password });
   } catch (err) {
-    res.send("error");
+    res.render("error", { message: "Something went wrong in the server" });
   }
 }
