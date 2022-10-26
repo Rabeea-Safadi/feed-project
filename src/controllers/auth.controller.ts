@@ -22,7 +22,14 @@ export async function checkLogin(req: Request, res: Response) {
       return;
     }
 
-    res.send(`${user.username} logged in -> take me to feed page`);
+    res.render("feed", {
+      username: user.username,
+      feedItems: [
+        { author: "rabeeasaf", body: "some dumbass shit" },
+        { author: "rabeeasaf", body: "some other dumbass shit" },
+        { author: "rabeeasaf", body: "some other other dumbass shit" },
+      ],
+    });
   } catch (err) {
     res.render("error", { message: "Something went wrong in the server" });
   }

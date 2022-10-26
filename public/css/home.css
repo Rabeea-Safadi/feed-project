@@ -21,20 +21,3 @@ input:focus {
 form * {
   margin: 5px;
 }
-
-button {
-  width: 250px;
-
-  border-radius: 15px;
-
-  background-color: #f4f4f4;
-  color: #0f0f0f;
-
-  box-shadow: 0 0 5px #f4f4f4;
-}
-
-button:hover {
-  cursor: pointer;
-
-  box-shadow: 0 0 15px #ffffff;
-}

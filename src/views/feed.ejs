@@ -1,0 +1,29 @@
+<head>
+  <link rel="stylesheet" href="/css/basic.css">
+  <link rel="stylesheet" href="/css/feed.css">
+</head>
+
+<div>
+  <h1>
+    Welcome, <%= username %>
+  </h1>
+
+  <form action="" name="feed-form" id="feed-form">
+    <label for="feed-box">Write Something To The Feed</label>
+    <button type="submit">Share To Feed</button>
+    <textarea name="feed-box" id="feed-box" form="feed-form" cols="100" rows="5"></textarea>
+  </form>
+
+  <div class="feed-list">
+    <% feedItems.map((item)=> { %>
+      <div class="feed-item">
+        <span>
+          <%= item.author %>
+        </span>
+        <div>
+          <%= item.body %>
+        </div>
+      </div>
+      <% }) %>
+  </div>
+</div>

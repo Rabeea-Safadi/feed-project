@@ -1,0 +1,42 @@
+body {
+  display: flex;
+
+  justify-content: center;
+}
+
+form {
+  display: flex;
+
+  flex-flow: column nowrap;
+
+  align-items: center;
+}
+
+form * {
+  margin: 5px;
+}
+
+textarea {
+  text-align: start;
+
+  font-size: 0.6rem;
+}
+
+.feed-list {
+  display: flex;
+
+  flex-flow: column nowrap;
+}
+
+.feed-item {
+  border-bottom: 1px solid #f4f4f4;
+  margin: 15px;
+}
+
+.feed-list span {
+  font-size: 0.7rem;
+}
+
+.feed-list div {
+  font-size: 1rem;
+}
