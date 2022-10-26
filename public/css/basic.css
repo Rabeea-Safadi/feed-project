@@ -24,3 +24,15 @@ button:hover {
 
   box-shadow: 0 0 15px #ffffff;
 }
+
+.log-out {
+  position: absolute;
+
+  font-size: 0.7rem;
+
+  width: 75px;
+
+  right: 0;
+  top: 0;
+  margin: 5px;
+}

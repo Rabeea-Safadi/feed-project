@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { hash, compare } from "bcrypt";
 import User from "../models/user.model";
+import Post from "../models/post.model";
 
 export async function checkLogin(req: Request, res: Response) {
   const { email, password } = req.body;
@@ -22,13 +23,14 @@ export async function checkLogin(req: Request, res: Response) {
       return;
     }
 
+    const posts = await Post.findMany({
+      orderBy: {
+        id: "desc",
+      },
+    });
     res.render("feed", {
       username: user.username,
-      feedItems: [
-        { author: "rabeeasaf", body: "some dumbass shit" },
-        { author: "rabeeasaf", body: "some other dumbass shit" },
-        { author: "rabeeasaf", body: "some other other dumbass shit" },
-      ],
+      feedItems: posts,
     });
   } catch (err) {
     res.render("error", { message: "Something went wrong in the server" });

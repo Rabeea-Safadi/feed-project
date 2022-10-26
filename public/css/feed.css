@@ -22,6 +22,11 @@ textarea {
   font-size: 0.6rem;
 }
 
+form textarea {
+  background-color: #f4f4f4;
+  color: #040404;
+}
+
 .feed-list {
   display: flex;
 
@@ -29,6 +34,10 @@ textarea {
 }
 
 .feed-item {
+  display: flex;
+
+  flex-flow: column nowrap;
+
   border-bottom: 1px solid #f4f4f4;
   margin: 15px;
 }
@@ -37,6 +46,11 @@ textarea {
   font-size: 0.7rem;
 }
 
-.feed-list div {
+.feed-item textarea {
   font-size: 1rem;
+
+  height: fit-content;
+
+  border: transparent;
+  overflow: hidden;
 }

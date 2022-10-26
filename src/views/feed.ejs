@@ -3,27 +3,29 @@
   <link rel="stylesheet" href="/css/feed.css">
 </head>
 
-<div>
-  <h1>
-    Welcome, <%= username %>
-  </h1>
+<body>
+  <div>
+    <button class="log-out" onclick="window.location = '/'">Log Out</button>
+    <h1>
+      Welcome, <%= username %>
+    </h1>
 
-  <form action="" name="feed-form" id="feed-form">
-    <label for="feed-box">Write Something To The Feed</label>
-    <button type="submit">Share To Feed</button>
-    <textarea name="feed-box" id="feed-box" form="feed-form" cols="100" rows="5"></textarea>
-  </form>
+    <form action="/post/create" name="feed-form" id="feed-form" method="post">
+      <label for="feed-box">Write Something To The Feed</label>
+      <button type="submit">Share To Feed</button>
+      <textarea name="body" id="feed-box" form="feed-form" cols="100" rows="5"></textarea>
+      <input type="hidden" id="author" name="author" value="<%= username %>">
+    </form>
 
-  <div class="feed-list">
-    <% feedItems.map((item)=> { %>
-      <div class="feed-item">
-        <span>
-          <%= item.author %>
-        </span>
-        <div>
-          <%= item.body %>
+    <div class="feed-list">
+      <% feedItems.map((item)=> { %>
+        <div class="feed-item">
+          <span>
+            Posted by <%= item.author %>
+          </span>
+          <textarea readonly cols="100" rows="5"><%= item.body %></textarea>
         </div>
-      </div>
-      <% }) %>
+        <% }) %>
+    </div>
   </div>
-</div>
+</body>

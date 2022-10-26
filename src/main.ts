@@ -6,6 +6,7 @@ import { PORT } from "./utils/config";
 import { ViewRouter } from "./routes/views.routes";
 import { AuthRouter } from "./routes/auth.routes";
 import express from "express";
+import { PostRouter } from "./routes/post.routes";
 
 async function main() {
   await prismaClient.$connect();
@@ -20,6 +21,7 @@ async function main() {
 
   app.use("/", ViewRouter);
   app.use("/auth", AuthRouter);
+  app.use("/post", PostRouter);
 
   app.listen(PORT);
 }
