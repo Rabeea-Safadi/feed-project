@@ -2,9 +2,31 @@ import { Request, Response } from "express";
 import { hash, compare } from "bcrypt";
 import User from "../models/user.model";
 
-export function checkLogin(req: Request, res: Response) {
-  console.log(req.body);
-  res.send("login page");
+export async function checkLogin(req: Request, res: Response) {
+  const { username, email, password } = req.body;
+
+  try {
+    const user = await User.findFirst({
+      where: {
+        email,
+        username,
+      },
+    });
+
+    if (!user) {
+      res.send("user not found");
+      return;
+    }
+
+    if (!(await compare(password, user.password))) {
+      res.send("wrong password");
+      return;
+    }
+
+    res.send(`${username} logged in`);
+  } catch (err) {
+    res.send("error");
+  }
 }
 
 export async function checkSignup(req: Request, res: Response) {
