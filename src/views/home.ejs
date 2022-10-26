@@ -6,16 +6,12 @@
 <body>
   <form action="/auth/login" method="post">
     <div>
-      <label for="username">Username</label>
-      <input type="text" name="username" id="username" value="<%= locals.username || "" %>">
-    </div>
-    <div>
       <label for="username">Email</label>
-      <input type="text" name="email" id="email" value="<%= locals.email || "" %>">
+      <input type="text" name="email" id="email" required value="<%= locals.email || "" %>">
     </div>
     <div>
       <label for="password">Password</label>
-      <input type="password" name="password" id="password" value="<%= locals.password || "" %>">
+      <input type="password" name="password" id="password" required value="<%= locals.password || "" %>">
     </div>
     <div>
       <button type="submit" id="login">Login</button>

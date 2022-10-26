@@ -3,13 +3,12 @@ import { hash, compare } from "bcrypt";
 import User from "../models/user.model";
 
 export async function checkLogin(req: Request, res: Response) {
-  const { username, email, password } = req.body;
+  const { email, password } = req.body;
 
   try {
     const user = await User.findFirst({
       where: {
         email,
-        username,
       },
     });
 
@@ -23,7 +22,7 @@ export async function checkLogin(req: Request, res: Response) {
       return;
     }
 
-    res.send(`${username} logged in`);
+    res.send(`${user.username} logged in -> take me to feed page`);
   } catch (err) {
     res.send("error");
   }
